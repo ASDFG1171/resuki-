@@ -279,16 +279,10 @@ jobs:
           echo "Selected SUSFS_DEV: ${{ github.event.inputs.SUSFS_DEV }}"
           echo "Selected FAST_BUILD: ${{ github.event.inputs.FAST_BUILD }}"
           echo "Selected SCHED_HMBIRD: ${{ github.event.inputs.SCHED_HMBIRD }}"
-          echo "Selected UNICODE_BYPASS: ${{ github.event.inputs.UNICODE_BYPASS }}"
           echo "Selected DROID_SPACES: ${{ github.event.inputs.DROID_SPACES }}"
           echo "Selected RE_KERNEL: ${{ github.event.inputs.RE_KERNEL }}"
           echo "Selected LZ4_UPDATE: ${{ github.event.inputs.LZ4_UPDATE }}"
           echo "Custom BUILD_TIME: $BUILD_TIME"
-          echo -n "BUILD_TIME Unicode: "
-          CHECK_TEXT="$BUILD_TIME" python3 "$GITHUB_WORKSPACE/kernel_workspace/Action-Build/scripts/check_unicode_format.py" --mode build_time
-          echo "Custom SUFFIX: $SUFFIX"
-          echo -n "SUFFIX Unicode: "
-          CHECK_TEXT="$SUFFIX" python3 "$GITHUB_WORKSPACE/kernel_workspace/Action-Build/scripts/check_unicode_format.py" --mode suffix
 
       - name: Check Disk Space
         run: df -h
@@ -703,18 +697,7 @@ jobs:
           source $REJ_CHECKER
           check_rejects .
 
-      - name: Apply UNICODE_BYPASS
-        if: ${{ github.event.inputs.UNICODE_BYPASS == 'true' }}
-        run: |
-          PATCH_DIR="${GITHUB_WORKSPACE}/kernel_workspace/Action-Build/patches"
-          cd kernel_workspace/kernel_platform/common
-          if [ "$VERSIONLEVEL" -lt 6 ]; then
-            patch -p1 --forward < "${PATCH_DIR}/unicode_bypass_fix_6.1-.patch" || true
-          else
-            patch -p1 --forward < "${PATCH_DIR}/unicode_bypass_fix_6.1+.patch" || true
-          fi
-          source $REJ_CHECKER
-          check_rejects .
+
 
       - name: Apply RE_KERNEL
         if: ${{ github.event.inputs.RE_KERNEL == 'true' }}
