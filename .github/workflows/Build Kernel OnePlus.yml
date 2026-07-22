@@ -143,7 +143,12 @@ jobs:
           remove-haskell: 'true'
           remove-codeql: 'true'
 
-
+      - name: Configure Git
+        run: |
+          git config --global user.name "Numbersf"
+          git config --global user.email "2722048997@qq.com"
+          mkdir kernel_workspace && cd kernel_workspace
+          git clone https://github.com/Numbersf/Action-Build.git -b ReSukiSU
 
       - name: Extract Manifest Info
         id: extract_info
