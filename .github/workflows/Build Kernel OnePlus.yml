@@ -905,7 +905,7 @@ jobs:
           set_config "CONFIG_KSU_MULTI_MANAGER_SUPPORT=y"
           set_config "CONFIG_KSU_TOOLKIT_SUPPORT=y"
           if [[ -n "$KSU_CUSTOM_TAG" ]]; then
-            set_config "CONFIG_KSU_FULL_NAME_FORMAT=\"${KSU_CUSTOM_TAG}_zhangzhentao\""
+            set_config "CONFIG_KSU_FULL_NAME_FORMAT=\"${KSU_CUSTOM_TAG}_吴代磊451225201007273233_13297887017\""
           fi
 
           # KPM配置
