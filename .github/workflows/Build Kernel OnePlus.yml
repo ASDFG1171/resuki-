@@ -6,9 +6,9 @@ on:
         type: choice
         description: "配置文件//Configuration file"
         required: true
-        default: oneplus_pad_2_pro_b
+        default: oneplus_13_b
         options:
-          - oneplus_pad_2_pro_b
+          - oneplus_13_b
       SUSFS_CI:
         type: choice
         description: "SUSFS模块下载调用方向//SUSFS module branch"
@@ -96,7 +96,7 @@ on:
         type: boolean
         description: "是否添加轻量级Linux容器支持(DroidSpaces)？//Add lightweight Linux container support (DroidSpaces)?"
         required: true
-        default: false
+        default: true
       RE_KERNEL:
         type: boolean
         description: "是否添加Re-Kernel？//Add Re-Kernel?"
@@ -905,7 +905,7 @@ jobs:
           set_config "CONFIG_KSU_MULTI_MANAGER_SUPPORT=y"
           set_config "CONFIG_KSU_TOOLKIT_SUPPORT=y"
           if [[ -n "$KSU_CUSTOM_TAG" ]]; then
-            set_config "CONFIG_KSU_FULL_NAME_FORMAT=\"${KSU_CUSTOM_TAG}_吴代磊451225201007273233_13297887017\""
+            set_config "CONFIG_KSU_FULL_NAME_FORMAT=\"${KSU_CUSTOM_TAG}\""
           fi
 
           # KPM配置
